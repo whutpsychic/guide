@@ -17,5 +17,7 @@
 
 [组件库](https://github.com/zhizao/nav)
 
+[模板库](https://github.com/zhizao/nav/blob/master/templates.md)
+
 [编码规范](https://github.com/taijizhizao/spec)
 
