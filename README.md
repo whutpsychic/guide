@@ -17,11 +17,7 @@
 
 ## 常用链接
 
-[系统模板](https://github.com/zhizao/nav/blob/master/templates.md)
-
-[页面模板](https://github.com/zhizao/nav/blob/master/templates.md)
-
-[组件](https://github.com/zhizao/nav)
+[组件和模板](组件和模板.md)
 
 [编码规范](https://github.com/taijizhizao/spec)
 
