@@ -19,5 +19,5 @@
 
 [模板和组件](模板和组件.md)
 
-[编码规范](https://github.com/taijizhizao/spec)
+
 
