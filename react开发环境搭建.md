@@ -1,49 +1,23 @@
-# 开发环境搭建
+# react开发环境搭建
 ## 概述
 
-### 操作系统
+### 简介
 
-本文描述了在一台全新电脑搭建开发环境的全部过程。这里，所有例子是在windows操作系统上进行的。本文的操作步骤不适合mac或linux操作系统。
+本文描述了在一台全新电脑搭建react开发环境的全部过程。
 
-### Node
+这里，所有例子是在windows操作系统上进行的。本文的操作步骤不适合mac或linux操作系统。
 
-Node.js是现代工业化前端的基础，为使用其它前端工具提供了必要环境。本文将介绍Node.js的安装和配置方法。
+### 关于Node
 
+Node.js是现代工业化前端的基础，为使用其它前端工具提供了必要环境。进行react框架开发时，nodejs是必要的。本文将介绍Node.js的安装和配置方法。
 
+### IDE选择
 
+我们需要选择一种IDE或编码工具，进行react编程开发。前端开发工具有很多种，每个人可根据习惯自由选择。
 
+选择的工具需要对ES6语法、jsx语法和less进行支持。
 
-下面这一段放在这里不合适，需要移植
-
-基于Node.js的工具主要包括：
-
-- 包管理工具，如`npm`、`bower`、`yarn`等
-
-  安装和管理第三方库，我们选择nodejs自带的`npm`
-
-- 自动构建工具，如`gulp`、`grunt`等
-
-  合并、压缩css、js，编译sass、less等，我们选择`gulp`
-
-- 模块预编译工具，如`webpack`、`browserify`等
-
-  将开发时编写的多个模块编译成一个模块，我们选择`webpack`
-
-- MVVM框架，如`react`、`angularjs`、`vue.js`等
-
-  MVVM是一种管理与组织代码的方式，实现了页面视图和数据Model的单向或双向绑定，目的是将开发人员的精力集中在业务和数据上，减少对页面元素的处理。我们选择`react`
-
-本文将分别介绍上述工具的安装和配置方法。
-
-
-
-### IDE
-
-前端开发工具有很多种，可根据习惯只有选择。本文以webstorm为例，讲解其安装和配置方法。
-
-
-
-
+本文以visual studio 2017为例，讲解安装和配置方法。
 
 
 
@@ -137,29 +111,17 @@ npm install -g create-react-app
 
 
 
-## webstorm
+## vs2017
 
 ### 下载安装
 
-windows版本的webstorm下载地址如下：
+vs2017下载地址如下：
 
-[下载地址](https://download.jetbrains.8686c.com/webstorm/WebStorm-2017.2.2.exe)
+[下载地址](https://www.visualstudio.com/zh-hans/thank-you-downloading-visual-studio/?sku=Community&rel=15#)
 
-采用默认配置进行安装。
+安装时，在工作负载部分勾选“Node.js”，如下图
 
-### 破解激活
+![](images/开发环境搭建/工作负载.png)
 
-首次运行时需要进行激活，如下图：
-
-![](images/开发环境搭建/激活.png)
-
-切换到License server，然后填写下面的激活码。
-
-```shell
-http://idea.iteblog.com/key.php
-```
-
-即可激活成功。
-
-
+其它步骤根据向导安装即可。
 
