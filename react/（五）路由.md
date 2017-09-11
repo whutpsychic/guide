@@ -1,0 +1,118 @@
+# 路由
+使用以下命令来安装React Router：
+
+```sh
+npm i react-router -s
+npm i react-router-dom -s
+```
+
+
+
+编写组件`User.js`，代码如下
+
+```javascript
+import React, { Component } from 'react';
+
+class User extends Component {
+    render() {
+        return (
+            <div>
+                用户管理页面内容
+            </div>
+        );
+    }
+}
+
+export default User;
+```
+
+
+
+编写组件`Log.js`，代码如下：
+
+```javascript
+import React, { Component } from 'react';
+
+class User extends Component {
+    render() {
+        return (
+            <div>
+                日志查询页面内容
+            </div>
+        );
+    }
+}
+
+export default User;
+```
+
+
+
+删除App.js。
+
+修改index.js，修改后的index.js如下：
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { HashRouter as Router, Route} from 'react-router-dom';
+import './index.css';
+ 
+import registerServiceWorker from './registerServiceWorker';
+import User from './User';
+import Log from './Log';
+import logo from './logo.svg';
+import './App.css';
+import Sider from './Sider'; 
+
+ReactDOM.render((
+    <Router>
+        <div className="App">
+            <div className="App-header">
+                <img src={logo} className="App-logo" alt="logo" />
+                <h2>Hello World</h2>
+            </div>
+            <Sider />
+            <div className="ui">
+                <Route path="/user" component={User} />
+                <Route path="/log" component={Log} />
+            </div>
+        </div>              
+    </Router>
+), document.getElementById('root'));
+registerServiceWorker();
+```
+
+ 
+
+修改Sider.js，修改后代码如下：
+
+```javascript
+import React, { Component } from 'react';
+import './Sider.css';
+import { Link } from 'react-router-dom';
+
+class Sider extends Component {
+    render() {
+        return (
+            <div className="Sider">
+                <ul>
+                    <li><Link to="/user">用户管理</Link></li>
+                    <li><Link to="/log">日志查询</Link></li>
+                </ul>
+            </div>
+        );
+    }
+}
+
+export default Sider;
+```
+
+
+
+保存后查看页面，可以看到点击左侧链接时，可以不刷新的加载不同的组件。
+
+而且，浏览器url地址会发生改变，并且可以使用浏览器的后退、收藏等功能。
+
+
+
