@@ -3,7 +3,7 @@
 
 ## 简介
 
-本文讲解react项目的编译和发布方法。
+Redux的作者封装了一个React专用库React-Redux，本文介绍它的使用方法。
 
 ​	
 
@@ -18,17 +18,17 @@
 
 ​	
 
-打开package.json文件，添加如下的配置项目：
+安装react-redux，命令如下：
 
-```json
-"homepage": "."
+```shell
+npm i react-redux -s
 ```
 
-如下图所示：
 
-![](images/编译项目/homepage.png)
 
-​	
+
+
+
 
 在项目路径打开命令窗口，输入以下命令：
 
