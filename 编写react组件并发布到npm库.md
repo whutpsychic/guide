@@ -379,6 +379,29 @@ npm start
 
 组件编写完成后，就可以发布到npm库中了。每次发布前，需要在`package.json`中修改版本号。
 
+​	
+
+打开`package.json`，找到"scripts"字段，将其修改如下：
+
+```json
+"scripts": {
+    "clean": "rimraf ./dist",
+    "build": "npm run clean && webpack",
+    "dev": "webpack-dev-server --config ./examples/webpack.config.dev.js",
+    "start": "rimraf ./examples-output && npm run dev",
+    "prepublish": "npm run build"
+},
+```
+
+​	
+
+执行以下命令：
+
+```shell
+# 启动开发环境
+npm start
+```
+
 
 
 
