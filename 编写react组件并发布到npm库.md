@@ -5,7 +5,7 @@
 
 本文讲解编写react组件的步骤，并把编写的组件发布到npm库中。
 
-在本文中，我们将编写一个名为`react-file-selector` 的组件，该组件实现点击或拖拽来选择上传文件的功能。
+在本文中，我们将编写一个名为`tj-react-file-selector` 的组件，该组件实现点击或拖拽来选择上传文件的功能。
 
 组件编写完成后，我们把它发布到私有npm库中，请确保已经按照[使用私有npm库](使用私有npm库.md)中的步骤配置好相关环境。
 
@@ -45,21 +45,17 @@ npm init
 
 
 
-我们要编写的`react-file-selector`组件需要依赖其他组件，包括`react`，`react-dom`，以及一个第三方库`react-dropzone`，可以从`npm`下载这些组件。
-
-​		
-
-首先，在项目根目录执行以下命令来下载`react`库：
+首先，从`npm`下载所需的组件，在项目根目录执行以下命令：
 
 ```shell
 # 下载react
-npm install react --save
-npm install react-dom --save
+npm install react --save-dev
+npm install react-dom --save-dev
 ```
 
 
 
-然后引入第三方库`react-dropzone`，用于实现文件的拖拽：
+引入第三方库`react-dropzone`，用于实现文件的拖拽：
 
 ```shell
 # 下载第三方库
@@ -68,19 +64,19 @@ npm install react-dropzone --save
 
 ​	
 
-在项目根目录创建`src`文件夹，并在其中新建文件`main.js`。在`main.js`中编写以下代码：
+在项目根目录创建`src`文件夹，并在其中新建文件`index.js`。在`index.js`中编写以下代码：
 
 ```javascript
-import React, { Component } from 'react';
+import React from 'react';
 import Dropzone from 'react-dropzone'
 
-class FileSelector extends Component {
+class FileSelector extends React.Component {
 
   render() {
     const { file, onSelectFile } = this.props;
 
     return (
-      <div className="react-file-selector">
+      <div className="tj-react-file-selector">
         <Dropzone style={{}} onDrop={(files) => {
           let f = (files && files.length) ? files[0] : null;
           onSelectFile(f);
@@ -108,7 +104,7 @@ export default FileSelector;
 
 ## 配置babel
 
-在刚才编写的`main.js`中，使用ES6和jsx语法，因此需要安装babel，将代码编译为ES5。
+在刚才编写的`index.js`中，使用ES6和jsx语法，因此需要安装babel，将代码编译为ES5。
 
 使用以下命令安装babel
 
@@ -155,7 +151,12 @@ module.exports = {
   entry: path.join(__dirname, 'src', 'index.js'),
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'index.js'
+    filename: 'index.js',
+    library: 'tj-react-file-selector',
+    libraryTarget: "umd"
+  },
+  externals: {
+    react: 'react'
   },
   module: {
     loaders: [{
@@ -168,49 +169,6 @@ module.exports = {
   }
 }
 ```
-
-
-
-## 配置编译脚本
-
-
-
-接下来要配置编译项目的脚本，一般我们把预定义的脚本写在`package.json`中，方便以后执行。
-
-​	
-
-首先安装第三方模块`rimraf`，用于删除文件夹：
-
-```shell
-# 安装rimraf
-npm install rimraf --save-dev
-```
-
-
-
-打开`package.json`，找到"scripts"字段，将其修改如下：
-
-```json
-"scripts": {
-    "clean": "rimraf ./dist",
-    "build": "npm run clean && webpack"
-},
-```
-
-​	
-
-## 编译
-
-执行以下命令：
-
-```shell
-# 编译项目
-npm run build
-```
-
-​	
-
-查看`dist`文件夹，其中生成了`index.js`文件。
 
 
 
@@ -256,14 +214,14 @@ npm install copy-webpack-plugin --save-dev
 
 ```javascript
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import FileSelector from '../src/index.js';
+import ReactDOM from 'react-dom';
+import FileSelector from '../dist/index.js';
 
 class App extends Component {
 
   constructor() {
     super();
-    this.state = { file: null };
+    this.state = { file:null };
   }
 
   render() {
@@ -349,37 +307,24 @@ module.exports = {
 }
 ```
 
-​	
 
-打开`package.json`，找到"scripts"字段，将其修改如下：
 
-```json
-"scripts": {
-    "clean": "rimraf ./dist",
-    "build": "npm run clean && webpack",
-    "dev": "webpack-dev-server --config ./examples/webpack.config.dev.js",
-    "start": "rimraf ./examples-output && npm run dev"
-  },
-```
+## 配置脚本
+
+
+
+接下来配置一些脚本，我们把预定义的脚本写在`package.json`中，方便以后执行。
 
 ​	
 
-执行以下命令：
+首先安装第三方模块`rimraf`，用于删除文件夹：
 
 ```shell
-# 启动开发环境
-npm start
+# 安装rimraf
+npm install rimraf --save-dev
 ```
 
-执行`npm start`后，会自动弹出浏览器窗口，并指向`localhost:9901`。
 
-​	
-
-## 发布组件
-
-组件编写完成后，就可以发布到npm库中了。每次发布前，需要在`package.json`中修改版本号。
-
-​	
 
 打开`package.json`，找到"scripts"字段，将其修改如下：
 
@@ -395,16 +340,20 @@ npm start
 
 ​	
 
-执行以下命令：
+可以直接执行以下命令：
 
 ```shell
 # 启动开发环境
 npm start
+
+# 编译组件
+npm run build
+
+# 发布
+npm publish
 ```
 
-
-
-
+​	​	
 
 
 
