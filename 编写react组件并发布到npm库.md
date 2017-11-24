@@ -247,10 +247,10 @@ ReactDOM.render(<App />, document.getElementById('root'));
 在`examples`文件夹中新建文件`index.css`，其中代码如下：
 
 ```css
-.react-file-selector {
+.tj-react-file-selector {
 }
 
-.react-file-selector > div {    
+.tj-react-file-selector > div {    
     height: 200px;
     border: 2px dashed #666;
     margin-left:10px;
@@ -258,12 +258,12 @@ ReactDOM.render(<App />, document.getElementById('root'));
     margin-bottom:20px;
 }
 
-.react-file-selector > span {
+.tj-react-file-selector > span {
     font-size: 20px;
     font-family: 'Microsoft YaHei';
 }
 
-.react-file-selector p {
+.tj-react-file-selector p {
     font-size: 20px;
     font-family: 'Microsoft YaHei';
 }
