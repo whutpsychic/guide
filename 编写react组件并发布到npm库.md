@@ -221,7 +221,7 @@ npm install copy-webpack-plugin --save-dev
 
 在`examples`文件夹中新建文件`index.js`，其中代码如下：
 
-```javascript
+```react
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import FileSelector from '../dist/index.js';
@@ -282,14 +282,13 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 在`examples`文件夹中新建文件`webpack.config.dev.js`，在其中编写如下代码：
 
-```javascript
+```react
 var path = require('path');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: path.join(__dirname, 'index.js'),
   output: {
-    path: path.join(__dirname, '../examples-output'),
     filename: 'index.js'
   },
   devtool: 'source-map',
@@ -316,7 +315,19 @@ module.exports = {
 }
 ```
 
+​	
 
+## 配置gitignore
+
+在根目录创建文件`.gitignore`，在其中编写以下内容：
+
+```powershell
+.vs
+/node_modules
+/dist
+```
+
+​	
 
 ## 配置脚本
 
