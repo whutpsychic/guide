@@ -123,7 +123,7 @@ npm install babel-preset-react --save-dev
 
 ```powershell
 # 创建文件
-echo . 2> .babelrc
+cd . > .babelrc
 ```
 
 
