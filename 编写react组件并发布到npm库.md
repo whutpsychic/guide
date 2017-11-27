@@ -119,7 +119,16 @@ npm install babel-preset-react --save-dev
 
 ​	
 
-在根目录创建文件`.babelrc`，并在其中编写以下内容
+在根目录创建文件`.babelrc`，可通过以下命令创建文件：
+
+```powershell
+# 创建文件
+echo . 2> .babelrc
+```
+
+
+
+在`.babelrc`中编写以下内容
 
 ```json
 {
