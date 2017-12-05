@@ -66,7 +66,7 @@ npm install react-dropzone --save
 
 在项目根目录创建`src`文件夹，并在其中新建文件`index.js`。在`index.js`中编写以下代码：
 
-```javascript
+```react
 import React from 'react';
 import Dropzone from 'react-dropzone'
 
@@ -153,13 +153,13 @@ npm install webpack --save-dev
 
 在根目录创建文件`webpack.config.js`，并在其中编写以下内容：
 
-```javascript
+```react
 var path = require('path');
 
 module.exports = {
   entry: path.join(__dirname, 'src', 'index.js'),
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname),
     filename: 'index.js',
     library: 'tj-react-file-selector',
     libraryTarget: "umd"
@@ -329,9 +329,19 @@ module.exports = {
 
 ​	
 
-## 配置脚本
+## 配置package.json
 
+​	
 
+在`package.json`中添加以下配置：
+
+```json
+"files": [ "index.js" ],
+```
+
+这里files描述了在发布npm包时，需要包含的文件。
+
+​	
 
 接下来配置一些脚本，我们把预定义的脚本写在`package.json`中，方便以后执行。
 
@@ -350,15 +360,18 @@ npm install rimraf --save-dev
 
 ```json
 "scripts": {
-    "clean": "rimraf ./dist",
+    "clean": "rimraf ./index.js",
     "build": "npm run clean && webpack",
     "dev": "webpack-dev-server --config ./examples/webpack.config.dev.js",
-    "start": "rimraf ./examples-output && npm run dev",
-    "prepublish": "npm run build"
+    "start": "npm run dev",
+    "prepublish": "npm run build",
+    "postpublish": "npm run clean"
 },
 ```
 
 ​	
+
+
 
 可以直接执行以下命令：
 
