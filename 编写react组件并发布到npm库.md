@@ -224,7 +224,7 @@ npm install copy-webpack-plugin --save-dev
 ```react
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
-import FileSelector from '../dist/index.js';
+import FileSelector from '../src/index.js';
 
 class App extends Component {
 
