@@ -29,7 +29,7 @@ npm init
 # name: tj-react-file-selector
 # version: 0.1.0
 # description: react文件选择
-# entry point: dist/index.js
+# entry point: index.js
 # test command:
 # git repository: 
 # keywords: 
